@@ -7,24 +7,10 @@ import Signup from './pages/Signup';
 import './App.css';
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('isDarkMode');
-    if (saved !== null) {
-      return JSON.parse(saved);
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
+  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
-    document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  
 
   const handleLogin = (credentials) => {
     // In a real app, you would validate credentials with a backend
@@ -46,8 +32,7 @@ function App() {
     <Router>
       <div className="app">
         <Navbar 
-          isDarkMode={isDarkMode} 
-          toggleDarkMode={toggleDarkMode}
+          
           isAuthenticated={isAuthenticated}
           onLogout={handleLogout}
         />

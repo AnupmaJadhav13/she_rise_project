@@ -2,20 +2,9 @@
 .about {
   min-height: 100vh;
   width: 100%;
-  background: var(--background);
+  background: var(--background); /* Updated to use global background variable */
   padding: var(--spacing-2xl) 0;
   position: relative;
-}
-
-.about::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23667eea" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-  opacity: 0.3;
 }
 
 .about-content {
@@ -30,7 +19,7 @@
   font-size: var(--font-size-4xl);
   text-align: center;
   margin-bottom: var(--spacing-lg);
-  color: var(--text);
+  color: var(--text); /* Updated to use global text variable */
   font-weight: 700;
   line-height: 1.2;
   position: relative;
@@ -44,7 +33,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
   border-radius: var(--radius-sm);
 }
 
@@ -65,7 +54,7 @@
 }
 
 .about-section {
-  background: var(--card-bg);
+  background: var(--card-bg); /* Updated to use global card background variable */
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
@@ -82,7 +71,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -90,7 +79,7 @@
 .about-section:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: #667eea;
+  border-color: var(--primary);
 }
 
 .about-section:hover::before {
@@ -113,7 +102,7 @@
   top: 0;
   width: 3px;
   height: 100%;
-  background: linear-gradient(180deg, #667eea, #764ba2);
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
   border-radius: var(--radius-sm);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -146,7 +135,7 @@
 
 .about-section ul li::before {
   content: '•';
-  color: #667eea;
+  color: var(--primary);
   font-weight: bold;
   position: absolute;
   left: 0;
@@ -161,7 +150,7 @@
 }
 
 .stat-item {
-  background: var(--card-bg);
+  background: var(--card-bg); /* Updated to use global card background variable */
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
@@ -173,12 +162,12 @@
 .stat-item:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: #667eea;
+  border-color: var(--primary);
 }
 
 .stat-item h3 {
   font-size: var(--font-size-3xl);
-  color: #667eea;
+  color: var(--primary);
   margin-bottom: var(--spacing-sm);
   font-weight: 700;
   line-height: 1.2;

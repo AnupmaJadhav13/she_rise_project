@@ -2,13 +2,13 @@
 .home {
   width: 100%;
   min-height: 100vh;
-  background-color: var(--background);
+  background-color: var(--background); /* Updated to use global background variable */
 }
 
 /* Simplified Hero Section */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #e0f2f7, #cfd8dc); /* Light blue to grey gradient */
+  color: var(--text); /* Changed to use primary text color for better contrast */
   padding: var(--spacing-2xl) 0;
   text-align: center;
   position: relative;
@@ -24,8 +24,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-  opacity: 0.3;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(0,0,0,0.05)" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'); /* Adjusted fill color for subtlety */
+  opacity: 1; /* Retaining opacity directly in SVG */
 }
 
 .hero .container {
@@ -39,17 +39,18 @@
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  background: linear-gradient(135deg, var(--primary), var(--secondary)); /* Keep gradient for text */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: var(--spacing-lg);
 }
 
 .hero p {
   font-size: var(--font-size-lg);
   margin-bottom: var(--spacing-xl);
-  opacity: 0.95;
+  color: var(--text-secondary); /* Ensure paragraph text has good contrast */
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -77,40 +78,43 @@
 }
 
 .hero-buttons .btn-primary {
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: var(--primary); /* Use primary color for main button */
+  border: 2px solid var(--primary);
   color: white;
+  box-shadow: var(--shadow-md);
 }
 
 .hero-buttons .btn-primary:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .hero-buttons .btn-secondary {
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  color: white;
+  border: 2px solid var(--primary); /* Use primary color for secondary button border */
+  color: var(--primary); /* Use primary color for secondary button text */
 }
 
 .hero-buttons .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.8);
+  background: var(--primary); /* On hover, fill with primary */
+  border-color: var(--primary); /* Keep border primary */
+  color: white; /* Change text to white on hover */
   transform: translateY(-2px);
 }
 
 /* Clean Courses Section */
 .courses {
   padding: var(--spacing-2xl) 0;
-  background: var(--background);
+  background: var(--background); /* Updated to use global background variable */
 }
 
 .courses h2 {
   text-align: center;
   font-size: var(--font-size-3xl);
   margin-bottom: var(--spacing-xl);
-  color: var(--text);
+  color: var(--text); /* Updated to use global text variable */
   font-weight: 700;
   position: relative;
 }
@@ -123,7 +127,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, var(--primary), var(--secondary)); /* Updated to use variables */
   border-radius: var(--radius-sm);
 }
 
@@ -135,14 +139,16 @@
 }
 
 .course-card {
-  background: var(--card-bg);
+  background: var(--card-bg); /* Updated to use global card background variable */
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .course-card::before {
@@ -152,25 +158,43 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, var(--primary), var(--secondary)); /* Updated to use variables */
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-normal);
+}
+
+.course-card::after { /* New pseudo-element for bottom border gradient */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary)); /* Updated to use variables */
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform var(--transition-normal) ease-out;
 }
 
 .course-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: #667eea;
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--primary); /* Updated to use variable */
 }
 
 .course-card:hover::before {
   opacity: 1;
 }
 
+.course-card:hover::after { /* Show bottom border gradient on hover */
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
 .course-card h3 {
   font-size: var(--font-size-xl);
   margin-bottom: var(--spacing-sm);
-  color: var(--text);
+  color: var(--text); /* Updated to use global text variable */
   font-weight: 600;
   line-height: 1.3;
 }
@@ -180,6 +204,7 @@
   margin-bottom: var(--spacing-md);
   line-height: 1.6;
   font-size: var(--font-size-sm);
+  flex-grow: 1; /* Allow description to take available space */
 }
 
 .course-meta {
@@ -190,7 +215,7 @@
 }
 
 .duration {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--primary), var(--secondary)); /* Updated to use variables */
   color: white;
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-md);
@@ -201,29 +226,30 @@
 }
 
 .level {
-  background: rgba(102, 126, 234, 0.1);
-  color: #667eea;
+  background: var(--surface); /* Updated to use global surface variable */
+  color: var(--primary);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-md);
   font-size: var(--font-size-xs);
   font-weight: 600;
-  border: 1px solid rgba(102, 126, 234, 0.2);
+  border: 1px solid var(--border);
 }
 
 .course-card .btn {
   width: 100%;
+  margin-top: auto; /* Push button to the bottom */
   font-weight: 600;
   padding: var(--spacing-sm) var(--spacing-md);
   min-height: 44px;
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
 /* About Section */
 .about-section {
   padding: var(--spacing-2xl) 0;
-  background: var(--surface);
+  background: var(--surface); /* Updated to use global surface variable */
   position: relative;
 }
 
@@ -234,7 +260,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23667eea" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="var(--primary)" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>'); /* Updated to use primary variable */
   opacity: 0.3;
 }
 
@@ -255,7 +281,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, var(--primary), var(--secondary)); /* Updated to use variables */
   border-radius: var(--radius-sm);
 }
 
@@ -298,7 +324,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, var(--primary), var(--secondary)); /* Updated to use variables */
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -306,7 +332,7 @@
 .about-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: #667eea;
+  border-color: var(--primary); /* Updated to use variable */
 }
 
 .about-card:hover::before {
@@ -344,7 +370,7 @@
 
 .about-card ul li::before {
   content: '•';
-  color: #667eea;
+  color: var(--primary); /* Updated to use variable */
   font-weight: bold;
   position: absolute;
   left: 0;
@@ -359,7 +385,7 @@
 }
 
 .stat-item {
-  background: var(--card-bg);
+  background: var(--card-bg); /* Updated to use global card background variable */
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
@@ -371,12 +397,12 @@
 .stat-item:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: #667eea;
+  border-color: var(--primary); /* Updated to use variable */
 }
 
 .stat-item h3 {
   font-size: var(--font-size-3xl);
-  color: #667eea;
+  color: var(--primary); /* Updated to use variable */
   margin-bottom: var(--spacing-sm);
   font-weight: 700;
   line-height: 1.2;
@@ -392,7 +418,7 @@
 
 /* Clean Footer */
 .footer {
-  background: var(--surface);
+  background: var(--surface); /* Updated to use global surface variable */
   border-top: 1px solid var(--border);
   padding: var(--spacing-2xl) 0 var(--spacing-lg);
 }
@@ -412,12 +438,8 @@
   font-size: var(--font-size-lg);
 }
 
-.footer-section h3 {
-  color: #667eea;
-}
-
 .footer-section p {
-  color: var(--text-secondary);
+  color: var(--text); /* Changed to primary text color for better contrast */
   line-height: 1.6;
   margin-bottom: var(--spacing-xs);
   font-size: var(--font-size-sm);
@@ -432,7 +454,7 @@
 }
 
 .footer-section ul li a {
-  color: var(--text-secondary);
+  color: var(--text); /* Changed to primary text color for better contrast */
   text-decoration: none;
   transition: color 0.3s ease;
   font-weight: 500;
@@ -440,14 +462,14 @@
 }
 
 .footer-section ul li a:hover {
-  color: #667eea;
+  color: var(--primary); /* Updated to use variable */
 }
 
 .footer-bottom {
   text-align: center;
   padding-top: var(--spacing-md);
   border-top: 1px solid var(--border);
-  color: var(--text-muted);
+  color: var(--text); /* Changed to primary text color for better contrast */
   font-size: var(--font-size-xs);
 }
 
@@ -492,6 +514,9 @@
   .hero-buttons .btn {
     min-width: 200px;
     font-size: var(--font-size-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    min-height: 52px;
+    border-radius: var(--radius-lg);
   }
   
   .courses {
@@ -511,6 +536,10 @@
     padding: var(--spacing-md);
   }
   
+  .course-card h3 {
+    font-size: var(--font-size-lg);
+  }
+  
   .about-section {
     padding: var(--spacing-xl) 0;
   }
@@ -528,6 +557,15 @@
     padding: var(--spacing-md);
   }
   
+  .about-card h3 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .about-card p,
+  .about-card ul li {
+    font-size: var(--font-size-xs);
+  }
+  
   .stats {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-md);
@@ -539,6 +577,10 @@
   
   .stat-item h3 {
     font-size: var(--font-size-2xl);
+  }
+  
+  .stat-item p {
+    font-size: var(--font-size-xs);
   }
   
   .footer {

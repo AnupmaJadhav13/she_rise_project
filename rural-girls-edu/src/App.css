@@ -1,31 +1,31 @@
 /* Modern CSS with Enhanced Visibility and Full Screen Coverage */
 :root {
   /* Light Theme Colors - More Vibrant */
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --secondary: #7c3aed;
+  --primary: #4a00e0; /* A more vibrant, slightly darker purple */
+  --primary-hover: #3a00b0; /* Darker hover for primary */
+  --secondary: #8c52ff; /* A lighter, complementary purple */
   --accent: #06b6d4;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --error: #ef4444;
+  --success: #059669;
+  --warning: #d97706;
+  --error: #dc2626;
   
   /* Enhanced Background Colors */
-  --background: #ffffff;
-  --surface: #f8fafc;
+  --background: #f0f0f0; /* Lighter background for better text contrast */
+  --surface: #ffffff; /* Lighter surface */
   --surface-hover: #f1f5f9;
   --card-bg: #ffffff;
-  --text: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
-  --border-light: #f1f5f9;
+  --text: #1a202c; /* Darker primary text color */
+  --text-secondary: #4a5568; /* Darker secondary text color */
+  --text-muted: #718096; /* Darker muted text color */
+  --border: #cdd5df; /* Slightly darker border for more definition */
+  --border-light: #e6eaf0; /* Adjusted for better visibility */
   
   /* Enhanced Shadows */
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.15), 0 1px 2px -1px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -2px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -4px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.15);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
   
   /* Enhanced Spacing */
   --spacing-xs: 0.5rem;
@@ -70,35 +70,6 @@
   --z-tooltip: 1070;
 }
 
-[data-theme="dark"] {
-  /* Dark Theme Colors - More Vibrant */
-  --primary: #3b82f6;
-  --primary-hover: #2563eb;
-  --secondary: #8b5cf6;
-  --accent: #22d3ee;
-  --success: #34d399;
-  --warning: #fbbf24;
-  --error: #f87171;
-  
-  /* Enhanced Dark Background Colors */
-  --background: #0f172a;
-  --surface: #1e293b;
-  --surface-hover: #334155;
-  --card-bg: #1e293b;
-  --text: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --border: #334155;
-  --border-light: #475569;
-  
-  /* Enhanced Dark Shadows */
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
-  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.5);
-}
-
 /* Global Reset and Base Styles */
 * {
   margin: 0;
@@ -115,8 +86,8 @@ body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   line-height: 1.6;
-  color: var(--text);
-  background-color: var(--background);
+  color: var(--text); /* Use text color from global variable */
+  background-color: var(--background); /* Use background color from global variable */
   transition: background-color var(--transition-normal), color var(--transition-normal);
   min-height: 100vh;
   overflow-x: hidden;
@@ -126,16 +97,15 @@ body {
 
 /* App Container - Full Screen Coverage */
 .app {
-  min-height: 100vh;
-  width: 100vw;
+  height: 100%; /* Changed from min-height */
+  width: 100%; /* Changed from width: 100vw; and removed overflow-x: hidden here */
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  /* overflow-x: hidden; - Moved to body */
 }
 
 .main-content {
   flex: 1;
-  margin-top: 70px; /* Reduced for smaller navbar */
   width: 100%;
   min-height: calc(100vh - 70px);
 }

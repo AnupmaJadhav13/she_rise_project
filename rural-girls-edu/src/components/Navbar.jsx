@@ -14,12 +14,10 @@ const Navbar = ({ isDarkMode, toggleDarkMode, isAuthenticated, onLogout }) => {
           <Link to="/" className="nav-link">
             Home
           </Link>
+          
         </div>
         
         <div className="nav-actions">
-          <button className="theme-toggle" onClick={toggleDarkMode}>
-            {isDarkMode ? '☀️' : '🌙'}
-          </button>
           
           {isAuthenticated ? (
             <div className="auth-buttons">
